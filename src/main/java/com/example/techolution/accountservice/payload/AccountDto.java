@@ -4,6 +4,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -16,6 +18,6 @@ public class AccountDto {
     private String telephone;
     private String gender;
     private int age;
-    private Date dob;
+    private String dob;
     private String Address;
 }
