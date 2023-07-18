@@ -6,13 +6,10 @@ import com.example.techolution.accountservice.mapper.AccountMapper;
 import com.example.techolution.accountservice.payload.AccountDto;
 import com.example.techolution.accountservice.repository.AccountRepository;
 import com.example.techolution.accountservice.service.AccountService;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class AccountServiceImpl implements AccountService {
 
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
 
     public AccountServiceImpl(AccountRepository accountRepository) {
@@ -35,7 +32,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto updateAccount(AccountDto accountDto, Long accountNumber) {
-        Account account = accountRepository.findById(accountNumber).orElseThrow(()-> new AccountNotFoundException("Account","Account Number",accountNumber));
+        Account account = accountRepository.findById(accountNumber).orElseThrow(() -> new AccountNotFoundException("Account", "Account Number", accountNumber));
         accountDto.setAccountNumber(accountNumber);
         return AccountMapper.MAPPER.entityToDto(accountRepository.save(AccountMapper.MAPPER.dtoToEntity(accountDto)));
     }

@@ -11,5 +11,6 @@ public interface AccountMapper {
     AccountMapper MAPPER = Mappers.getMapper(AccountMapper.class);
 
     AccountDto entityToDto(Account entity);
+
     Account dtoToEntity(AccountDto dto);
 }

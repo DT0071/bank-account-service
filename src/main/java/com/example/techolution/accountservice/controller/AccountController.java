@@ -7,13 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
 
-    private AccountService accountService;
+    private final AccountService accountService;
 
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
@@ -31,8 +30,8 @@ public class AccountController {
 
     @GetMapping
     public List<AccountDto> getAllAccounts(
-            @RequestParam(value = "pageNo", defaultValue = "0", required = false ) int pageNo,
-            @RequestParam(value = "pageSize", defaultValue = "10", required = false ) int pageSize
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
     ) {
         return accountService.getAllAccounts(pageNo, pageSize);
     }

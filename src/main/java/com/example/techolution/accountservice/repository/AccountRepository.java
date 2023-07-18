@@ -3,7 +3,6 @@ package com.example.techolution.accountservice.repository;
 import com.example.techolution.accountservice.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
