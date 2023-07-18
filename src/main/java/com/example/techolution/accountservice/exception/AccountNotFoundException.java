@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class AccountNotFoundException extends RuntimeException{
     private String accountName;
     private String fieldName;
-    private String fieldValue;
+    private Long fieldValue;
 
-    public AccountNotFoundException(String accountName, String fieldName, String fieldValue) {
+    public AccountNotFoundException(String accountName, String fieldName, Long fieldValue) {
         super(String.format("%s not found with %s : %s",accountName,fieldName,fieldValue));
         this.accountName = accountName;
         this.fieldName = fieldName;

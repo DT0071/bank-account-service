@@ -4,10 +4,10 @@ import com.example.techolution.accountservice.payload.AccountDto;
 import com.example.techolution.accountservice.service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/accounts")
@@ -22,6 +22,27 @@ public class AccountController {
     @PostMapping
     public ResponseEntity<AccountDto> createAccount(@RequestBody AccountDto accountDto) {
         return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{accountNumber}")
+    public ResponseEntity<AccountDto> updateAccount(@RequestBody AccountDto accountDto, @PathVariable(name = "accountNumber") Long accountNumber) {
+        return new ResponseEntity<>(accountService.updateAccount(accountDto, accountNumber), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public List<AccountDto> getAllAccounts(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false ) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false ) int pageSize
+    ) {
+        return accountService.getAllAccounts(pageNo, pageSize);
+    }
+
+    @GetMapping("/{accountNo}/{accountName}")
+    public List<AccountDto>getByAccountNumberOrName(
+            @PathVariable( required = false ) Optional<Long> accountNo,
+            @PathVariable( required = false ) Optional<String> accountName
+    ) {
+        return accountService.getByAccountNumberOrName(accountNo.get(),accountName.get());
     }
 
 }
