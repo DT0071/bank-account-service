@@ -37,12 +37,12 @@ public class AccountController {
         return accountService.getAllAccounts(pageNo, pageSize);
     }
 
-    @GetMapping("/{accountNo}/{accountName}")
-    public List<AccountDto>getByAccountNumberOrName(
-            @PathVariable( required = false ) Optional<Long> accountNo,
-            @PathVariable( required = false ) Optional<String> accountName
+    // Search API to query accounts based on account number or account name
+    @GetMapping("/search")
+    public ResponseEntity<List<AccountDto>> searchAccounts(
+            @RequestParam("query") String query
     ) {
-        return accountService.getByAccountNumberOrName(accountNo.get(),accountName.get());
+        return ResponseEntity.ok(accountService.searchAccounts(query));
     }
 
 }

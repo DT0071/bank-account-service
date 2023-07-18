@@ -49,8 +49,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountDto> getByAccountNumberOrName(Long accountNumber, String accountName) {
-        List<Account> accountList = accountRepository.findByAccountNumberOrAccountName(accountNumber,accountName);
+    public List<AccountDto> searchAccounts(String query) {
+        List<Account> accountList = accountRepository.searchAccounts(query);
         return accountList.stream().map(AccountMapper.MAPPER::entityToDto).collect(Collectors.toList());
     }
 

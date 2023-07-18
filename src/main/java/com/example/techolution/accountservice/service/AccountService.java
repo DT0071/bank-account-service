@@ -12,6 +12,6 @@ public interface AccountService {
 
     List<AccountDto> getAllAccounts(int pageNo, int pageSize);
 
-    List<AccountDto> getByAccountNumberOrName(Long accountNumber, String accountName);
+    List<AccountDto> searchAccounts(String query);
 
 }
