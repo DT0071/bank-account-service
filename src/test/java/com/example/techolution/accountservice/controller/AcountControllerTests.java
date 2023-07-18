@@ -1,4 +1,4 @@
-package com.example.techolution.accountservice.unittests.controller;
+package com.example.techolution.accountservice.controller;
 
 import com.example.techolution.accountservice.controller.AccountController;
 import com.example.techolution.accountservice.payload.AccountDto;
@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(AccountController.class)
-public class AcountControllerTest {
+public class AcountControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
